@@ -22,6 +22,7 @@ var std = AppDB.Students.Include((e) => e.MentorStudents).ThenInclude((e) => e.m
 if (std != null)
 {
     Console.WriteLine($"Name: {std.Name}");
+    Console.WriteLine($"BirthDate: {std.BirthDate.Month}");
     Console.WriteLine($"Age: {std.Age}");
     Console.WriteLine($"Club: {std.Club.ClubName}");
     Console.WriteLine($"Club Category: {std.Club.CategoryName}");

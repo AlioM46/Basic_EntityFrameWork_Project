@@ -13,22 +13,28 @@ namespace EntityFrameWork
             DateTime Today = DateTime.Now;
 
             int Year = Today.Year - Birthdate.Year;
-            int Month = Birthdate.Month - Today.Month;
-            int Day= Today.Day - Birthdate.Day;
-            
+            int Month = Today.Month - Birthdate.Month;
+            int Day = Today.Day - Birthdate.Day;
+
+            // Adjust the month and year if the month difference is negative
             if (Month < 0)
             {
                 Year--;
                 Month += 12;
             }
-            
-            if (Day < 0) {
 
-                Day += DateTime.DaysInMonth(Today.Year, Today.Month);
+            // Adjust the day and month if the day difference is negative
+            if (Day < 0)
+            {
+                // Subtract the previous month’s last day to get the correct days
+                Month--;
+
+
+                Day += DateTime.DaysInMonth(Today.Year, Today.Month - 1); // Get the days of the previous month
+
+
             }
-
             return $"{Year} Year And {Month} Month And {Day} Day";
-
 
         }
 
